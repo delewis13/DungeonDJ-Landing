@@ -1,34 +1,65 @@
-import PropTypes from 'prop-types';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import faGem from '@fortawesome/fontawesome-free-regular/faGem'
+import PropTypes from "prop-types"
+import FontAwesomeIcon from "@fortawesome/react-fontawesome"
+import faGem from "@fortawesome/fontawesome-free-regular/faGem"
 
 const Header = (props) => (
-    <header id="header" style={props.timeout ? {display: 'none'} : {}}>
-        <div className="logo">
-            {/*<span className="icon fa-diamond"></span>*/}
-            <FontAwesomeIcon icon={faGem} transform="grow-18" />
-        </div>
-        <div className="content">
-            <div className="inner">
-                <h1>Dimension</h1>
-                <p>A fully responsive site template designed by <a href="https://html5up.net">HTML5 UP</a> and released<br />
-                for free under the <a href="https://html5up.net/license">Creative Commons</a> license.</p>
-            </div>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="javascript:;" onClick={() => {props.onOpenArticle('intro')}}>Intro</a></li>
-                <li><a href="javascript:;" onClick={() => {props.onOpenArticle('work')}}>Work</a></li>
-                <li><a href="javascript:;" onClick={() => {props.onOpenArticle('about')}}>About</a></li>
-                <li><a href="javascript:;" onClick={() => {props.onOpenArticle('contact')}}>Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header id="header" style={props.timeout ? { display: "none" } : {}}>
+    <div className="logo">
+      {/*<span className="icon fa-diamond"></span>*/}
+      {/* <FontAwesomeIcon icon={faGem} transform="grow-18" /> */}
+      <img src="static/images/recording@8x.png" style={{ width: "100%" }} />
+    </div>
+    <div className="content">
+      <div className="inner">
+        <h1>DungeonDJ</h1>
+        <p>Automate your ambience</p>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li>
+          <a
+            href="https://github.com/delewis13/DungeonDJ-UI/releases/latest/download/DungeonDJ.dmg"
+            // href="javascript:;"
+            // onClick={() => {
+            //   props.onOpenArticle("download")
+            // }}
+            style={{ backgroundColor: "black" }}
+          >
+            Mac
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/delewis13/DungeonDJ-UI/releases/latest/download/DungeonDJ-Setup.exe"
+            // onClick={() => {
+            //   props.onOpenArticle("work")
+            // }}
+            style={{ backgroundColor: "black" }}
+          >
+            Windows
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.patreon.com/dungeon_dj"
+            style={{ backgroundColor: "black" }}
+            // href="javascript:;"
+            // onClick={() => {
+            //   props.onOpenArticle("about")
+            // }}
+          >
+            Patreon
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 )
 
 Header.propTypes = {
-    onOpenArticle: PropTypes.func,
-    timeout: PropTypes.bool
+  onOpenArticle: PropTypes.func,
+  timeout: PropTypes.bool,
 }
 
 export default Header
