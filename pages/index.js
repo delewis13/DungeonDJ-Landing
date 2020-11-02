@@ -106,7 +106,20 @@ class IndexPage extends React.Component {
             {/* <Footer timeout={this.state.timeout} /> */}
           </div>
 
-          <div id="bg" />
+          <div
+            id="bg"
+            style={{
+              transform: "scale(1.01)",
+              backgroundSize: "cover",
+              backgroundImage: `url(
+                ${
+                  process.env.NODE_ENV === "production"
+                    ? "/DungeonDJ-Landing/static/images/waveform8.png"
+                    : "/static/images/waveform8.png"
+                }
+              )`,
+            }}
+          />
         </div>
       </div>
     )
