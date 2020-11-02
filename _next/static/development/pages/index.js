@@ -16,7 +16,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _this = undefined,
-    _jsxFileName = "/Users/daniel.e.lewis/Documents/Learning/nextjs-starter-dimension/components/Footer.js";
+    _jsxFileName = "/Users/daniel.e.lewis/Documents/DungeonDJ/landing/components/Footer.js";
 
 
 
@@ -86,7 +86,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _this = undefined,
-    _jsxFileName = "/Users/daniel.e.lewis/Documents/Learning/nextjs-starter-dimension/components/Header.js";
+    _jsxFileName = "/Users/daniel.e.lewis/Documents/DungeonDJ/landing/components/Header.js";
 
 
 
@@ -114,7 +114,7 @@ var Header = function Header(props) {
       columnNumber: 5
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: "static/images/recording@8x.png",
+    src: "/static/images/recording@8x.png",
     style: {
       width: "100%"
     },
@@ -268,7 +268,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_fontawesome_free_brands_faGithub__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_fontawesome_free_brands_faGithub__WEBPACK_IMPORTED_MODULE_6__);
 
 
-var _jsxFileName = "/Users/daniel.e.lewis/Documents/Learning/nextjs-starter-dimension/components/Main.js";
+var _jsxFileName = "/Users/daniel.e.lewis/Documents/DungeonDJ/landing/components/Main.js";
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -9192,7 +9192,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Footer */ "./components/Footer.js");
 
 
-var _jsxFileName = "/Users/daniel.e.lewis/Documents/Learning/nextjs-starter-dimension/pages/index.js";
+var _jsxFileName = "/Users/daniel.e.lewis/Documents/DungeonDJ/landing/pages/index.js";
 
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
