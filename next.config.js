@@ -4,7 +4,7 @@ const glob = require("glob")
 const debug = process.env.NODE_ENV !== "production"
 
 module.exports = {
-  assetPrefix: !debug ? "https://delewis13.github.io/DungeonDJ-Landing/" : "",
+  assetPrefix: !debug ? "https://dungeon-dj.com/" : "",
   webpack: (config, { dev }) => {
     config.module.rules.push(
       {

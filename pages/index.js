@@ -114,7 +114,7 @@ class IndexPage extends React.Component {
               backgroundImage: `url(
                 ${
                   process.env.NODE_ENV === "production"
-                    ? "/DungeonDJ-Landing/static/images/waveform8.png"
+                    ? `${process.env.BACKEND_URL}/static/images/waveform8.png`
                     : "/static/images/waveform8.png"
                 }
               )`,
