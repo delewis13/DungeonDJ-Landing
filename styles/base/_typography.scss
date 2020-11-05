@@ -8,6 +8,7 @@
 
 html {
   font-size: 16pt;
+  transition: font-size 2s ease-in-out;
 
   @include breakpoint(xlarge) {
     font-size: 12pt;
