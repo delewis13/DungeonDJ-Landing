@@ -109,13 +109,15 @@ class IndexPage extends React.Component {
           <div
             id="bg"
             style={{
-              transform: "scale(1.01)",
               backgroundSize: "cover",
+              backgroundPosition: "bottom",
+              backgroundColor: "black",
+              backgroundRepeat: "no-repeat",
               backgroundImage: `url(
                 ${
                   process.env.NODE_ENV === "production"
-                    ? `${process.env.BACKEND_URL}/static/images/waveform8.png`
-                    : "/static/images/waveform8.png"
+                    ? `${process.env.BACKEND_URL}/static/images/background.png`
+                    : "/static/images/background.png"
                 }
               )`,
             }}
