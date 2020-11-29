@@ -1,4 +1,5 @@
 import PropTypes from "prop-types"
+import Link from "next/link"
 
 const Header = (props) => (
   <header id="header" style={props.timeout ? { display: "none" } : {}}>
@@ -17,7 +18,7 @@ const Header = (props) => (
       <ul>
         <li>
           <a
-            href="https://github.com/delewis13/DungeonDJ-UI/releases/latest/download/DungeonDJ.dmg"
+            href="https://github.com/delewis13/DungeonDJ-UI/releases/latest/download/dungeondj.dmg"
             // href="javascript:;"
             // onClick={() => {
             //   props.onOpenArticle("download")
@@ -30,7 +31,7 @@ const Header = (props) => (
         </li>
         <li>
           <a
-            href="https://github.com/delewis13/DungeonDJ-UI/releases/latest/download/DungeonDJ-Setup.exe"
+            href="https://github.com/delewis13/DungeonDJ-UI/releases/latest/download/dungeondj.exe"
             // onClick={() => {
             //   props.onOpenArticle("work")
             // }}
@@ -40,13 +41,14 @@ const Header = (props) => (
           </a>
         </li>
         <li>
+          <Link href="/tutorials">
+            <a style={{ backgroundColor: "black" }}>Tutorial</a>
+          </Link>
+        </li>
+        <li>
           <a
             href="https://www.patreon.com/dungeon_dj"
             style={{ backgroundColor: "black" }}
-            // href="javascript:;"
-            // onClick={() => {
-            //   props.onOpenArticle("about")
-            // }}
           >
             Patreon
           </a>
