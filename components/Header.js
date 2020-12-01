@@ -1,3 +1,4 @@
+import React from "react"
 import PropTypes from "prop-types"
 import Link from "next/link"
 
@@ -5,9 +6,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 import { useState } from "react"
 import Fade from "@material-ui/core/Fade"
+import Popover from "@material-ui/core/Popover"
+import { Tooltip, Typography } from "@material-ui/core"
 
 const Header = (props) => {
   const [showTutorials, setShowTutorials] = useState(false)
+  const [hover, setHover] = useState(null)
 
   return (
     <>
@@ -44,20 +48,34 @@ const Header = (props) => {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="https://github.com/delewis13/DungeonDJ-UI/releases/latest/download/dungeondj.exe"
-                    // onClick={() => {
-                    //   props.onOpenArticle("work")
-                    // }}
-                    style={{ backgroundColor: "black" }}
+                  <Tooltip
+                    title={`
+                        Windows installations will trigger a warning screen as we
+                        have not yet purchased a Windows code signing
+                        certificate. You can bypass this warning screen via
+                        clicking "more info" > "run anyway"`}
                   >
-                    Windows
-                  </a>
+                    <a
+                      href="https://github.com/delewis13/DungeonDJ-UI/releases/latest/download/dungeondj.exe"
+                      // onClick={() => {
+                      //   props.onOpenArticle("work")
+                      // }}
+                      style={{ backgroundColor: "black" }}
+                      onMouseEnter={(e) => {
+                        setHover(e)
+                      }}
+                      onMouseLeave={() => {
+                        setHover(null)
+                      }}
+                    >
+                      Windows
+                    </a>
+                  </Tooltip>
                 </li>
                 <li>
                   <a
                     onClick={() => setShowTutorials(true)}
-                    style={{ backgroundColor: "black" }}
+                    style={{ backgroundColor: "black", cursor: "pointer" }}
                   >
                     Tutorial
                   </a>
@@ -89,6 +107,8 @@ const Header = (props) => {
               style={{
                 cursor: "pointer",
                 marginBottom: "8px",
+                height: "30px",
+                width: "30px",
               }}
               onClick={() => setShowTutorials(false)}
             >
