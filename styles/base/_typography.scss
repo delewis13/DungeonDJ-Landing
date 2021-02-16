@@ -7,24 +7,32 @@
 /* Type */
 
 html {
-  font-size: 16pt;
+  font-size: 18pt;
   transition: font-size 2s ease-in-out;
 
   @include breakpoint(xlarge) {
-    font-size: 12pt;
+    font-size: 20pt;
+  }
+
+  @include breakpoint(large) {
+    font-size: 18pt;
+  }
+
+  @include breakpoint(medium) {
+    font-size: 16pt;
   }
 
   @include breakpoint(small) {
-    font-size: 11pt;
+    font-size: 14pt;
   }
 
   @include breakpoint(xxsmall) {
-    font-size: 10pt;
+    font-size: 12pt;
   }
 
-  @media screen and (max-width: 1024px) {
-    font-size: 20pt;
-  }
+  // @media screen and (max-width: 1024px) {
+  //   font-size: 10pt;
+  // }
 }
 
 body,

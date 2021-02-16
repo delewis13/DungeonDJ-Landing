@@ -16,114 +16,103 @@ const Header = (props) => {
   return (
     <>
       <Fade in={!showTutorials} timeout={250}>
-        <div>
-          <header id="header" style={props.timeout ? { display: "none" } : {}}>
-            <div className="logo">
-              {/*<span className="icon fa-diamond"></span>*/}
-              {/* <FontAwesomeIcon icon={faGem} transform="grow-18" /> */}
-              <img
-                src="static/images/recording@8x.png"
-                style={{ width: "100%" }}
-              />
+        <header id="header" style={props.timeout ? { display: "none" } : {}}>
+          <div className="logo">
+            <img
+              src="static/images/recording@8x.png"
+              style={{ width: "100%" }}
+            />
+          </div>
+          <div className="content">
+            <div className="inner">
+              <h1>DungeonDJ</h1>
+              <p>Automate your ambience</p>
             </div>
-            <div className="content">
-              <div className="inner">
-                <h1>DungeonDJ</h1>
-                <p>Automate your ambience</p>
-              </div>
-            </div>
-            <nav>
-              <ul>
-                <li>
-                  <a
-                    href="https://github.com/delewis13/DungeonDJ-UI/releases/latest/download/dungeondj.dmg"
-                    // href="javascript:;"
-                    // onClick={() => {
-                    //   props.onOpenArticle("download")
-                    // }}
-                    aria-label="Mac Download"
-                    style={{ backgroundColor: "black" }}
-                  >
-                    Mac
-                  </a>
-                </li>
-                <li>
-                  <Tooltip
-                    title={`
+          </div>
+          <nav>
+            <ul>
+              <li>
+                <a
+                  href="https://github.com/delewis13/DungeonDJ-UI/releases/latest/download/dungeondj.dmg"
+                  aria-label="Mac Download"
+                  style={{ backgroundColor: "black" }}
+                >
+                  Mac
+                </a>
+              </li>
+              <li>
+                <Tooltip
+                  title={`
                         Windows installations will trigger a warning screen as we
                         have not yet purchased a Windows code signing
                         certificate. You can bypass this warning screen via
                         clicking "more info" > "run anyway"`}
-                  >
-                    <a
-                      href="https://github.com/delewis13/DungeonDJ-UI/releases/latest/download/dungeondj.exe"
-                      // onClick={() => {
-                      //   props.onOpenArticle("work")
-                      // }}
-                      style={{ backgroundColor: "black" }}
-                      onMouseEnter={(e) => {
-                        setHover(e)
-                      }}
-                      onMouseLeave={() => {
-                        setHover(null)
-                      }}
-                    >
-                      Windows
-                    </a>
-                  </Tooltip>
-                </li>
-                <li>
+                >
                   <a
-                    onClick={() => setShowTutorials(true)}
-                    style={{ backgroundColor: "black", cursor: "pointer" }}
-                  >
-                    Tutorial
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.patreon.com/dungeon_dj"
+                    href="https://github.com/delewis13/DungeonDJ-UI/releases/latest/download/dungeondj.exe"
                     style={{ backgroundColor: "black" }}
+                    onMouseEnter={(e) => {
+                      setHover(e)
+                    }}
+                    onMouseLeave={() => {
+                      setHover(null)
+                    }}
                   >
-                    Patreon
+                    Windows
                   </a>
-                </li>
-              </ul>
-            </nav>
-          </header>
-        </div>
+                </Tooltip>
+              </li>
+              <li>
+                <a
+                  onClick={() => setShowTutorials(true)}
+                  style={{ backgroundColor: "black", cursor: "pointer" }}
+                >
+                  Tutorial
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.patreon.com/dungeon_dj"
+                  style={{ backgroundColor: "black" }}
+                >
+                  Patreon
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </header>
       </Fade>
       <Fade in={showTutorials} timeout={250}>
         <div
           style={{
             position: "absolute",
+            display: "flex",
+            alignItems: "flex-start",
+            flexDirection: "column",
           }}
         >
           <div
-            id="wrapper"
-            style={{ display: "flex", alignItems: "flex-start" }}
+            style={{
+              cursor: "pointer",
+              marginBottom: "8px",
+              height: "30px",
+              width: "30px",
+            }}
+            onClick={() => setShowTutorials(false)}
           >
-            <div
-              style={{
-                cursor: "pointer",
-                marginBottom: "8px",
-                height: "30px",
-                width: "30px",
-              }}
-              onClick={() => setShowTutorials(false)}
-            >
-              <FontAwesomeIcon size="2x" icon={faArrowLeft} />
-            </div>
-
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/videoseries?list=PLpItlhmfZ62nKmChUmY65dok_mz2BPo5g"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+            <FontAwesomeIcon size="2x" icon={faArrowLeft} />
           </div>
+
+          <iframe
+            style={{
+              height: "45vw",
+              width: "80vw",
+            }}
+            src="https://www.youtube.com/embed/videoseries?list=PLpItlhmfZ62nKmChUmY65dok_mz2BPo5g"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
         </div>
       </Fade>
     </>
@@ -131,7 +120,6 @@ const Header = (props) => {
 }
 
 Header.propTypes = {
-  onOpenArticle: PropTypes.func,
   timeout: PropTypes.bool,
 }
 
