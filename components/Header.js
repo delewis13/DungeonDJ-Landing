@@ -25,10 +25,11 @@ const Header = (props) => {
           </div>
           <div className="content">
             <div className="inner">
-              <h1>DungeonDJ</h1>
-              <p>Automate your ambience</p>
+              {props.title ? <h1>{props.title}</h1> : <></>}
+              {props.subtitle ? <p>{props.subtitle}</p> : <></> }
             </div>
           </div>
+          { props.showLinks ?
           <nav>
             <ul>
               <li>
@@ -80,6 +81,7 @@ const Header = (props) => {
               </li>
             </ul>
           </nav>
+          : <></> }
         </header>
       </Fade>
       <Fade in={showTutorials} timeout={250}>

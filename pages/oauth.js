@@ -6,7 +6,7 @@ import Header from "../components/Header"
 import Main from "../components/Main"
 // import Footer from "../components/Footer"
 
-class IndexPage extends React.Component {
+class HeaderPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -63,11 +63,11 @@ class IndexPage extends React.Component {
         />
 
         <div id="wrapper">
-          <Header timeout={this.state.timeout} showLinks={true} title='DungeonDJ' subtitle='Automate your ambience'/>
+          <Header timeout={this.state.timeout} showLinks={false} subtitle="Login successful, head back to the app" />
         </div>
       </div>
     )
   }
 }
 
-export default IndexPage
+export default HeaderPage
