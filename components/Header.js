@@ -8,6 +8,7 @@ import { useState } from "react"
 import Fade from "@material-ui/core/Fade"
 import Popover from "@material-ui/core/Popover"
 import { Tooltip, Typography } from "@material-ui/core"
+import ErrorIcon from '@material-ui/icons/Error';
 
 const Header = (props) => {
   const [showTutorials, setShowTutorials] = useState(false)
@@ -43,11 +44,13 @@ const Header = (props) => {
               </li>
               <li>
                 <Tooltip
-                  title={`
-                        Windows installations will trigger a warning screen as we
+                  size='large'
+                  title={<div style={{display: 'flex', flexDirection: 'column', padding: '0.25rem'}}>
+                        <ErrorIcon style={{margin: 'auto', marginBottom: '0.5rem'}}/>
+                        <Typography style={{fontSize: '0.7rem'}}>Windows installations will trigger a warning screen as we
                         have not yet purchased a Windows code signing
                         certificate. You can bypass this warning screen via
-                        clicking "more info" > "run anyway"`}
+                        clicking "more info" & "run anyway"</Typography></div>}
                 >
                   <a
                     href="https://github.com/delewis13/DungeonDJ-UI/releases/latest/download/dungeondj.exe"
