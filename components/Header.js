@@ -7,26 +7,42 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import Fade from '@material-ui/core/Fade';
 import Popover from '@material-ui/core/Popover';
-import { Paper, Tooltip, Typography } from '@material-ui/core';
+import { Button, IconButton, Paper, Tooltip, Typography } from '@material-ui/core';
 import ErrorIcon from '@material-ui/icons/Error';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const Header = (props) => {
   const [showTutorials, setShowTutorials] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
   const [hover, setHover] = useState(null);
 
+  const About = () => (
+    <div style={{margin: '16px'}}>
+      <Typography gutterBottom style={{ textTransform: 'none', letterSpacing: 'normal', maxWidth: '600px'}}>
+        DungeonDJ is a voice-activated music player. No more fumbling around, tabbing through apps just to get the right
+        ambience. Headed into battle? Configure "roll initiative" to start your
+        battle playlist. DungeonDJ has a 14 day trial, and we only count the days you use!
+      </Typography>
+
+    </div>
+  );
+
   const Main = () => (
-    <Fade in={!showTutorials && !showAbout} timeout={250}>
+    <Fade in={!showTutorials} timeout={250}>
       <header id="header" style={props.timeout ? { display: 'none' } : {}}>
         <div className="logo">
           <img src="static/images/recording@8x.png" style={{ width: '100%' }} />
         </div>
         <div className="content">
-          <div className="inner">
-            {props.title ? <h1>{props.title}</h1> : <></>}
-            {props.subtitle ? <p>{props.subtitle}</p> : <></>}
+            {!showAbout ? (
+        <div className="inner">
+                {props.title ? <h1>{props.title}</h1> : <></>}
+                {props.subtitle ? <p>{props.subtitle}</p> : <></>}
+              </div>
+            ) : (
+              <About />
+            )}
           </div>
-        </div>
         {props.showLinks ? (
           <nav>
             <ul>
@@ -78,10 +94,10 @@ const Header = (props) => {
               </li>
               <li>
                 <a
-                  onClick={() => setShowAbout(true)}
+                  onClick={() => setShowAbout(!showAbout)}
                   style={{ backgroundColor: 'black', cursor: 'pointer' }}
                 >
-                  About
+                  { showAbout ? 'Home' : 'About' }
                 </a>
               </li>
               <li>
@@ -145,61 +161,10 @@ const Header = (props) => {
     </Fade>
   );
 
-  const About = () => (
-    <Fade in={showAbout} timeout={250}>
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-        }}
-      >
-        <div
-          style={{
-            cursor: 'pointer',
-            height: '30px',
-            width: '30px',
-            margin: '16px',
-            marginBottom: '0px'
-          }}
-          onClick={() => setShowAbout(false)}
-        >
-          <FontAwesomeIcon size="2x" icon={faArrowLeft} />
-        </div>
-        <div style={{ flexGrow: 1 }}>
-        <Paper elevation={9} style={{margin: '16px', padding: '16px', flexGrow: 1, background: '#171717', color: 'white',}}>
-            <Typography variant='subtitle1' align='center' gutterBottom>What is it?</Typography>
-            <Typography gutterBottom>
-              DungeonDJ is a voice-activated music player. Think of it like a
-              configurable "Hey Siri" that plays whatever track you choose!
-            </Typography>
-            <Typography gutterBottom>
-              No more fumbling around, tabbing through apps just to get
-              the right ambience. Headed into battle? Configure "roll
-              initiative" to start your battle playlist. Going into town?
-              Create the phrase "bustling town" to start your town ambience.
-            </Typography>
-            <Typography variant='subtitle1' align='center' gutterBottom>Is it free?</Typography>
-            <Typography gutterBottom>
-              DungeonDJ provides a full-access 14 day trial, which only includes
-              days you actually use it. After that you can maintain access via
-              Patreon, where you can have your say in what new features get
-              added!
-            </Typography>
-        </Paper>
-        </div>
-
-      </div>
-    </Fade>
-  );
-
   return (
     <>
       <Main />
       <Video />
-      <About />
     </>
   );
 };
