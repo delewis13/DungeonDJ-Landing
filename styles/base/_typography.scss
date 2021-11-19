@@ -11,15 +11,15 @@ html {
   transition: font-size 2s ease-in-out;
 
   @include breakpoint(xlarge) {
-    font-size: 20pt;
-  }
-
-  @include breakpoint(large) {
     font-size: 18pt;
   }
 
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     font-size: 16pt;
+  }
+
+  @include breakpoint(medium) {
+    font-size: 14pt;
   }
 
   @include breakpoint(small) {
