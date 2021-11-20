@@ -48,7 +48,7 @@ const Header = (props) => {
             <ul>
               <li>
                 <a
-                  href="https://github.com/delewis13/DungeonDJ-UI/releases/latest/download/dungeondj.dmg"
+                  href="https://github.com/delewis13/DungeonDJ-UI/releases/latest/download/DungeonDJ.Setup.dmg"
                   aria-label="Mac Download"
                   style={{ backgroundColor: 'black' }}
                 >
@@ -79,7 +79,7 @@ const Header = (props) => {
                   }
                 >
                   <a
-                    href="https://github.com/delewis13/DungeonDJ-UI/releases/latest/download/dungeondj.exe"
+                    href="https://github.com/delewis13/DungeonDJ-UI/releases/latest/download/DungeonDJ-setup.exe"
                     style={{ backgroundColor: 'black' }}
                     onMouseEnter={(e) => {
                       setHover(e);
