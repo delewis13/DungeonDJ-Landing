@@ -71,9 +71,8 @@ const Header = (props) => {
                       />
                       <Typography style={{ fontSize: '0.7rem' }}>
                         Windows installations will trigger a warning screen as
-                        we have not yet purchased a Windows code signing
-                        certificate. You can bypass this warning screen via
-                        clicking "more info" & "run anyway"
+                        our Windows code signing certificate doesn't have enough reputation yet.
+                        You can bypass this warning screen via clicking "more info" & "run anyway"
                       </Typography>
                     </div>
                   }
