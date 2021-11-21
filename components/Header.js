@@ -81,12 +81,6 @@ const Header = (props) => {
                   <a
                     href="https://github.com/delewis13/DungeonDJ-UI/releases/latest/download/DungeonDJ-setup.exe"
                     style={{ backgroundColor: 'black' }}
-                    onMouseEnter={(e) => {
-                      setHover(e);
-                    }}
-                    onMouseLeave={() => {
-                      setHover(null);
-                    }}
                   >
                     Windows
                   </a>
