@@ -67,7 +67,7 @@ const Header = (props) => {
       <ul>
         <li>
           <a
-            href="https://github.com/delewis13/DungeonDJ-UI/releases/latest/download/DungeonDJ.Setup.dmg"
+            href="https://github.com/delewis13/DungeonDJ-UI/releases/latest/download/DungeonDJ-Setup.dmg"
             aria-label="Mac Download"
             style={{ backgroundColor: 'black' }}
             onClick={() => setShowSnackbar(true)}
