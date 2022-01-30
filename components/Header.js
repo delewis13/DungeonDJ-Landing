@@ -32,7 +32,7 @@ const Header = (props) => {
     <Fade in={!showTutorials} timeout={250}>
       <header id="header" style={props.timeout ? { display: 'none' } : {}}>
         <div className="logo">
-          <img src="static/images/recording@8x.png" style={{ width: '100%' }} />
+          <img src="static/images/logo@32x.png" style={{ width: '100%' }} />
         </div>
         <div className="content">
             {!showAbout ? (

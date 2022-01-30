@@ -39,7 +39,7 @@ class IndexPage extends React.Component {
           <link
             rel="icon"
             type="image/png"
-            href="static/images/recording@8x.png"
+            href="static/images/logo@8x.png"
           />
         </Head>
 
