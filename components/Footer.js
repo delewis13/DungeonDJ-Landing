@@ -31,7 +31,7 @@ const Footer = () => (
       </li>
     </ul>
     <p className="copyright">
-      &copy; {new Date().getFullYear()} {site.operator}. Design based on Dimension by{" "}
+      &copy; {site.operator}. Design based on Dimension by{" "}
       <a href="https://html5up.net">HTML5 UP</a>.
     </p>
   </footer>

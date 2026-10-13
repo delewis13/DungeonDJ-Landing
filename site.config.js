@@ -17,6 +17,11 @@ module.exports = {
   tutorialPlaylistId: "PLpItlhmfZ62nKmChUmY65dok_mz2BPo5g",
   // [{ src: "static/images/screenshots/library.png", alt: "Sound library" }], 16:10 works best.
   screenshots: [],
+  requirements: {
+    mac: "Needs a Mac with Apple silicon (M1 or later).",
+    windows:
+      "The Windows installer isn't code-signed yet, so Windows shows a SmartScreen warning. Click \u201cMore info\u201d, then \u201cRun anyway\u201d.",
+  },
   downloads: {
     mac: `${RELEASES}/DungeonDJ-Setup.dmg`,
     windows: `${RELEASES}/DungeonDJ-Setup.exe`,

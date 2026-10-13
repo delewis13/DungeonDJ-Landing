@@ -13,6 +13,12 @@ const read = (page) => {
   return fs.readFileSync(file, "utf8")
 }
 
+const article = (html) => {
+  const match = html.match(/<article[^>]*>([\s\S]*?)<\/article>/)
+  assert.ok(match, "page has no <article>")
+  return match[1]
+}
+
 const attr = (html, selector) => {
   const match = html.match(selector)
   return match && match[1]
@@ -52,7 +58,7 @@ test("download buttons point at the release feed the app updates from", () => {
 })
 
 test("every page links to privacy and support", () => {
-  for (const page of ["index.html", "privacy.html", "support.html"]) {
+  for (const page of pages) {
     const html = read(page)
     assert.ok(html.includes('href="/privacy"'), `${page}: privacy link`)
     assert.ok(html.includes('href="/support"'), `${page}: support link`)
@@ -60,9 +66,10 @@ test("every page links to privacy and support", () => {
 })
 
 test("privacy policy covers what the app collects", () => {
-  const html = read("privacy.html")
-  for (const phrase of ["microphone", "FullStory", "Sentry", "Google", "Patreon", "bug report", "delete"]) {
-    assert.ok(html.toLowerCase().includes(phrase.toLowerCase()), `privacy policy should mention ${phrase}`)
+  const policy = article(read("privacy.html")).toLowerCase()
+  const phrases = ["microphone", "fullstory", "sentry", "announcekit", "google", "patreon", "bug report", "ip address"]
+  for (const phrase of [...phrases, "to delete your account"]) {
+    assert.ok(policy.includes(phrase), `privacy policy should mention ${phrase}`)
   }
 })
 
@@ -110,7 +117,10 @@ test("no template placeholder text ships", () => {
 test("every local image referenced by a page exists", () => {
   for (const page of pages) {
     const html = read(page)
-    const refs = [...html.matchAll(/(?:src|href)="\/?(static\/images\/[^"?#]+)"/g)].map((m) => m[1])
+    const attrs = [...html.matchAll(/(?:src|href)="\/?(static\/images\/[^"?#]+)"/g)]
+    const styles = [...html.matchAll(/url\(["']?\/?(static\/images\/[^"')?#]+)/g)]
+    const refs = [...attrs, ...styles].map((m) => m[1])
+    assert.ok(refs.some((ref) => ref.endsWith("background.png")), `${page}: background image not found in CSS`)
     for (const ref of refs) {
       assert.ok(fs.existsSync(path.join(OUT, ref)), `${page}: missing ${ref}`)
     }

@@ -15,6 +15,8 @@ yarn dev     # http://localhost:3000
 yarn test    # production export into .site-check/, then scripts/check-site.js
 ```
 
+`yarn test` rebuilds `.next/`, which `yarn dev` also uses; stop the dev server first.
+
 ## Changing content
 
 Links, contact details, the demo video and screenshots all live in `site.config.js`.

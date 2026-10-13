@@ -11,14 +11,23 @@ const faqs = [
     question: "Windows says it protected my PC. Is the installer safe?",
     answer: (
       <p>
-        The Windows installer isn&apos;t code-signed yet, so SmartScreen warns about it. Click &ldquo;More info&rdquo;,
-        then &ldquo;Run anyway&rdquo;. Only download {site.name} from this website.
+        {site.requirements.windows} Only download {site.name} from this website.
       </p>
     ),
   },
   {
     question: "Which Macs are supported?",
-    answer: <p>Macs with Apple silicon (M1 or later). Intel Macs aren&apos;t supported.</p>,
+    answer: <p>{site.requirements.mac} Intel Macs aren&apos;t supported.</p>,
+  },
+  {
+    question: "DungeonDJ says \u201cRosetta required\u201d.",
+    answer: (
+      <p>
+        Click &ldquo;Install Rosetta&rdquo;, then reopen {site.name}. Its audio engine needs Rosetta, Apple&apos;s
+        translation layer, which new Macs don&apos;t come with. You only need to do this once. To install it yourself,
+        run <code>softwareupdate --install-rosetta --agree-to-license</code> in Terminal.
+      </p>
+    ),
   },
   {
     question: "DungeonDJ doesn't react when I say my phrase.",
@@ -75,8 +84,8 @@ const faqs = [
     question: "How do I back up my setup?",
     answer: (
       <p>
-        Go to Settings &rarr; Profile and save your profile. Keep that file somewhere safe, along with a copy of your
-        sounds folder.
+        Go to Settings &rarr; Profile and click &ldquo;Export {site.name} Profile&rdquo;. Keep that file somewhere
+        safe, along with a copy of your sounds folder. &ldquo;Upload {site.name} Profile&rdquo; restores it.
       </p>
     ),
   },

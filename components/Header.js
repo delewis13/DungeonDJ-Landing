@@ -37,21 +37,14 @@ const Links = () => {
       />
       <ul>
         <li>
-          <Tooltip title={<DownloadNote>Needs a Mac with Apple silicon (M1 or later).</DownloadNote>}>
+          <Tooltip title={<DownloadNote>{site.requirements.mac}</DownloadNote>}>
             <a href={site.downloads.mac} aria-label="Download for Mac" onClick={onDownload}>
               Mac
             </a>
           </Tooltip>
         </li>
         <li>
-          <Tooltip
-            title={
-              <DownloadNote>
-                The Windows installer isn&apos;t code-signed yet, so Windows shows a SmartScreen warning. Click
-                &quot;More info&quot;, then &quot;Run anyway&quot;.
-              </DownloadNote>
-            }
-          >
+          <Tooltip title={<DownloadNote>{site.requirements.windows}</DownloadNote>}>
             <a href={site.downloads.windows} aria-label="Download for Windows" onClick={onDownload}>
               Windows
             </a>
@@ -77,7 +70,7 @@ const Links = () => {
 }
 
 const Header = ({ title, subtitle, showLinks }) => (
-  <Fade in timeout={250}>
+  <Fade in appear={false} timeout={250}>
     <header id="header">
       <div className="logo">
         <img src="/static/images/logo@32x.png" alt="" style={{ width: "100%" }} />

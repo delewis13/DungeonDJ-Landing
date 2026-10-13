@@ -10,7 +10,7 @@ const steps = [
   {
     title: "Build your soundboard",
     text:
-      "Add your own music and effects, download audio from YouTube, or search free libraries such as Freesound and OpenGameArt. Group sounds into playlists and categories so background tracks cross-fade instead of piling up.",
+      "Add your own music and effects, download audio from YouTube, or search Freesound and a built-in catalogue of free music. Put sounds in categories so starting a new background track fades out the old one.",
   },
   {
     title: "Teach it a phrase",
@@ -28,17 +28,17 @@ const features = [
   "Speech is recognised on your computer. Your microphone audio never leaves it.",
   "A 14-day free trial that only counts the days you open the app.",
   "Keep going after the trial by supporting DungeonDJ on Patreon.",
-  "Available for Mac (Apple silicon) and Windows.",
+  `Available for Mac and Windows. ${site.requirements.mac}`,
 ]
 
 const Showcase = () => (
   <div className="showcase">
     <section id="demo" className="panel">
-      <h2 className="major">See it in action</h2>
+      <h2 className="major">{site.demoVideoId ? "See it in action" : "Tutorials"}</h2>
       <div className="video">
         <iframe
           src={videoSrc}
-          title="DungeonDJ demo"
+          title={`${site.name} ${site.demoVideoId ? "demo" : "tutorials"}`}
           frameBorder="0"
           allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen

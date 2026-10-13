@@ -68,12 +68,8 @@ Layout.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   path: PropTypes.string.isRequired,
-  variant: PropTypes.oneOf(["home", "page", "center"]),
+  variant: PropTypes.oneOf(["home", "page"]),
   children: PropTypes.node,
-}
-
-Layout.defaultProps = {
-  variant: "center",
 }
 
 export default Layout
