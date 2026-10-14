@@ -1,19 +1,40 @@
-import { Typography } from "@material-ui/core"
-import PropTypes from "prop-types"
+import React from "react"
+import Link from "next/link"
 
-const Footer = (props) => (
-  <footer id="footer" style={props.timeout ? { display: "none" } : {}}>
-    <Typography>Hello</Typography>
+import site from "../site.config"
+
+const Footer = () => (
+  <footer id="footer">
+    <ul className="footer-links">
+      <li>
+        <Link href="/">
+          <a>Home</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="/support">
+          <a>Support</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="/privacy">
+          <a>Privacy</a>
+        </Link>
+      </li>
+      {site.discordUrl && (
+        <li>
+          <a href={site.discordUrl}>Discord</a>
+        </li>
+      )}
+      <li>
+        <a href={site.patreonUrl}>Patreon</a>
+      </li>
+    </ul>
     <p className="copyright">
-      &copy; Next.js Starter - Dimension. Design:{" "}
-      <a href="https://html5up.net">HTML5 UP</a>. Built with:{" "}
-      <a href="https://github.com/zeit/next.js">Next.js</a>
+      &copy; {site.operator}. Design based on Dimension by{" "}
+      <a href="https://html5up.net">HTML5 UP</a>.
     </p>
   </footer>
 )
-
-Footer.propTypes = {
-  timeout: PropTypes.bool,
-}
 
 export default Footer

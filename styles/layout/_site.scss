@@ -1,0 +1,241 @@
+/* Site: scrolling home page, content panels and footer links */
+
+$panel-width: 44rem;
+$panel-bg: transparentize(_palette(bg), 0.15);
+
+#bg {
+  background: _palette(bg-alt) url("/static/images/background.png") bottom / cover no-repeat;
+}
+
+#wrapper {
+  scroll-behavior: smooth;
+
+  &.home {
+    @include vendor("justify-content", "flex-start");
+  }
+
+  &.home > *,
+  &.page > * {
+    @include vendor("flex-shrink", "0");
+  }
+}
+
+.hero {
+  @include vendor("display", "flex");
+  @include vendor("flex-direction", "column");
+  @include vendor("align-items", "center");
+  @include vendor("justify-content", "center");
+  position: relative;
+  min-height: calc(100vh - 8rem);
+  width: 100%;
+
+  @include breakpoint(xlarge) {
+    min-height: calc(100vh - 6rem);
+  }
+
+  @include breakpoint(small) {
+    min-height: calc(100vh - 4rem);
+  }
+
+  @include breakpoint(xsmall) {
+    min-height: calc(100vh - 2rem);
+  }
+}
+
+#header nav ul li a {
+  background-color: _palette(bg-alt);
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 0;
+  font-size: 1.5rem;
+  line-height: 1;
+  border-bottom: 0;
+  opacity: 0.6;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.showcase {
+  @include vendor("display", "flex");
+  @include vendor("flex-direction", "column");
+  @include vendor("align-items", "center");
+  width: 100%;
+  padding-top: 2rem;
+}
+
+.panel {
+  position: relative;
+  width: $panel-width;
+  max-width: 100%;
+  margin: 0 0 2rem 0;
+  padding: 2.5rem 2.5rem 1rem 2.5rem;
+  background-color: $panel-bg;
+  border-radius: _size(border-radius);
+
+  &.wide {
+    width: 64rem;
+  }
+
+  h3 {
+    margin-top: 2rem;
+  }
+
+  h4 {
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.1rem;
+  }
+
+  .meta {
+    font-size: 0.8rem;
+    color: _palette(fg-light);
+    margin-top: -1rem;
+  }
+
+  .faq {
+    margin-bottom: 1.5rem;
+
+    p,
+    ul,
+    ol {
+      margin-bottom: 0;
+    }
+  }
+
+  @include breakpoint(small) {
+    padding: 2rem 1.5rem 0.5rem 1.5rem;
+  }
+}
+
+.video {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  margin-bottom: 1.5rem;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: _size(border-radius);
+  }
+}
+
+.steps {
+  @include vendor("display", "flex");
+  list-style: none;
+  counter-reset: step;
+  padding-left: 0;
+  margin: 0 -0.75rem _size(element-margin) -0.75rem;
+
+  li {
+    @include vendor("flex", "1");
+    counter-increment: step;
+    padding: 0 0.75rem;
+
+    h3 {
+      margin-top: 0;
+      font-size: 0.8rem;
+      letter-spacing: 0.1rem;
+
+      &:before {
+        content: counter(step);
+        display: block;
+        font-size: 1.5rem;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+        color: _palette(fg-light);
+      }
+    }
+
+    p {
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+  }
+
+  @include breakpoint(small) {
+    @include vendor("flex-direction", "column");
+
+    li + li {
+      margin-top: 1.5rem;
+    }
+  }
+}
+
+.features {
+  border-top: solid _size(border-width) _palette(border-bg-alt);
+  padding-top: 1.5rem;
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.screenshots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  grid-gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  a {
+    border-bottom: 0;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    border-radius: _size(border-radius);
+  }
+}
+
+.brand {
+  @include vendor("display", "flex");
+  @include vendor("align-items", "center");
+  width: $panel-width;
+  max-width: 100%;
+  margin-bottom: 1.5rem;
+  border-bottom: 0;
+  font-weight: _font(weight-bold);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: _font(letter-spacing);
+
+  img {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.75rem;
+  }
+}
+
+#footer {
+  width: auto;
+  padding: 0.75rem 1.5rem;
+  margin-bottom: 1rem;
+  background-color: transparentize(_palette(bg), 0.05);
+  border-radius: _size(border-radius);
+
+  .copyright {
+    opacity: 1;
+    color: _palette(fg-light);
+  }
+
+  .footer-links {
+    list-style: none;
+    padding-left: 0;
+    margin: 0 0 0.75rem 0;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: _font(letter-spacing);
+
+    li {
+      display: inline-block;
+      padding: 0 0.75rem;
+    }
+  }
+}

@@ -1,186 +1,95 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Link from 'next/link';
+import React from "react"
+import PropTypes from "prop-types"
+import Fade from "@material-ui/core/Fade"
+import Snackbar from "@material-ui/core/Snackbar"
+import Tooltip from "@material-ui/core/Tooltip"
+import Typography from "@material-ui/core/Typography"
+import ErrorIcon from "@material-ui/icons/Error"
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
-import Fade from '@material-ui/core/Fade';
-import Popover from '@material-ui/core/Popover';
-import { Button, IconButton, Paper, Tooltip, Typography } from '@material-ui/core';
-import ErrorIcon from '@material-ui/icons/Error';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import Snackbar from '@material-ui/core/Snackbar'
+import site from "../site.config"
 
-const Header = (props) => {
-  const [showTutorials, setShowTutorials] = useState(false);
-  const [showAbout, setShowAbout] = useState(false);
-  const [hover, setHover] = useState(null);
+const DownloadNote = ({ children }) => (
+  <div style={{ display: "flex", flexDirection: "column", padding: "0.25rem" }}>
+    <ErrorIcon style={{ margin: "auto", marginBottom: "0.5rem" }} />
+    <Typography style={{ fontSize: "0.7rem" }}>{children}</Typography>
+  </div>
+)
 
-  const About = () => (
-    <div style={{margin: '16px'}}>
-      <Typography gutterBottom style={{ textTransform: 'none', letterSpacing: 'normal', maxWidth: '600px'}}>
-        DungeonDJ is a voice-activated music player. No more fumbling around, tabbing through apps just to get the right
-        ambience. Headed into battle? Configure "roll initiative" to start your
-        battle playlist. DungeonDJ has a 14 day trial, and we only count the days you use!
-      </Typography>
+DownloadNote.propTypes = {
+  children: PropTypes.node,
+}
 
-    </div>
-  );
+const Links = () => {
+  const [showSnackbar, setShowSnackbar] = React.useState(false)
+  const onDownload = () => setShowSnackbar(true)
 
-  const Main = () => (
-    <Fade in={!showTutorials} timeout={250}>
-      <header id="header" style={props.timeout ? { display: 'none' } : {}}>
-        <div className="logo">
-          <img src="static/images/logo@32x.png" style={{ width: '100%' }} />
-        </div>
-        <div className="content">
-            {!showAbout ? (
-        <div className="inner">
-                {props.title ? <h1>{props.title}</h1> : <></>}
-                {props.subtitle ? <p>{props.subtitle}</p> : <></>}
-              </div>
-            ) : (
-              <About />
-            )}
-          </div>
-        {props.showLinks ? (
-          <Links />
-        ) : (
-          <></>
-        )}
-      </header>
-    </Fade>
-  );
-
-
-  const Links = () => {
-    const [showSnackbar, setShowSnackbar] = React.useState(false)
-    return (
-      <nav>
+  return (
+    <nav>
       <Snackbar
         open={showSnackbar}
         autoHideDuration={6000}
-        onClose={() => { setShowSnackbar(false)}}
-        message={<Typography variant='body2' style={{cursor: 'pointer'}} onClick={() => setShowSnackbar(false)}>Download will start in a few seconds</Typography>}
+        onClose={() => setShowSnackbar(false)}
+        message={
+          <Typography variant="body2" style={{ cursor: "pointer" }} onClick={() => setShowSnackbar(false)}>
+            Your download will start in a few seconds
+          </Typography>
+        }
       />
       <ul>
         <li>
-          <a
-            href="https://github.com/delewis13/DungeonDJ-UI/releases/latest/download/DungeonDJ-Setup.dmg"
-            aria-label="Mac Download"
-            style={{ backgroundColor: 'black' }}
-            onClick={() => setShowSnackbar(true)}
-          >
-            Mac
-          </a>
+          <Tooltip title={<DownloadNote>{site.requirements.mac}</DownloadNote>}>
+            <a href={site.downloads.mac} aria-label="Download for Mac" onClick={onDownload}>
+              Mac
+            </a>
+          </Tooltip>
         </li>
         <li>
-          <Tooltip
-            size="large"
-            title={
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  padding: '0.25rem',
-                }}
-              >
-                <ErrorIcon
-                  style={{ margin: 'auto', marginBottom: '0.5rem' }}
-                />
-                <Typography style={{ fontSize: '0.7rem' }}>
-                  Windows installations will trigger a warning screen as
-                  our Windows code signing certificate doesn't have enough reputation yet.
-                  You can bypass this warning screen via clicking "more info" & "run anyway"
-                </Typography>
-              </div>
-            }
-          >
-            <a
-              href="https://github.com/delewis13/DungeonDJ-UI/releases/latest/download/DungeonDJ-setup.exe"
-              style={{ backgroundColor: 'black' }}
-              onClick={() => setShowSnackbar(true)}
-            >
+          <Tooltip title={<DownloadNote>{site.requirements.windows}</DownloadNote>}>
+            <a href={site.downloads.windows} aria-label="Download for Windows" onClick={onDownload}>
               Windows
             </a>
           </Tooltip>
         </li>
         <li>
-          <a
-            onClick={() => setShowAbout(!showAbout)}
-            style={{ backgroundColor: 'black', cursor: 'pointer' }}
-          >
-            { showAbout ? 'Home' : 'About' }
-          </a>
+          <a href="#about">About</a>
         </li>
         <li>
-          <a
-            onClick={() => setShowTutorials(true)}
-            style={{ backgroundColor: 'black', cursor: 'pointer' }}
-          >
-            Tutorial
-          </a>
+          <a href="#demo">Tutorial</a>
         </li>
+        {site.discordUrl && (
+          <li>
+            <a href={site.discordUrl}>Discord</a>
+          </li>
+        )}
         <li>
-          <a
-            href="https://www.patreon.com/dungeon_dj"
-            style={{ backgroundColor: 'black' }}
-          >
-            Patreon
-          </a>
+          <a href={site.patreonUrl}>Patreon</a>
         </li>
       </ul>
     </nav>
-    )
-  }
+  )
+}
 
-  const Video = () => (
-    <Fade in={showTutorials} timeout={250}>
-      <div
-        style={{
-          position: 'absolute',
-          display: 'flex',
-          alignItems: 'flex-start',
-          flexDirection: 'column',
-        }}
-      >
-        <div
-          style={{
-            cursor: 'pointer',
-            marginBottom: '8px',
-            height: '30px',
-            width: '30px',
-          }}
-          onClick={() => setShowTutorials(false)}
-        >
-          <FontAwesomeIcon size="2x" icon={faArrowLeft} />
-        </div>
-
-        <iframe
-          style={{
-            height: '45vw',
-            width: '80vw',
-          }}
-          src="https://www.youtube.com/embed/videoseries?list=PLpItlhmfZ62nKmChUmY65dok_mz2BPo5g"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+const Header = ({ title, subtitle, showLinks }) => (
+  <Fade in appear={false} timeout={250}>
+    <header id="header">
+      <div className="logo">
+        <img src="/static/images/logo@32x.png" alt="" style={{ width: "100%" }} />
       </div>
-    </Fade>
-  );
-
-  return (
-    <>
-      <Main />
-      <Video />
-    </>
-  );
-};
+      <div className="content">
+        <div className="inner">
+          {title && <h1>{title}</h1>}
+          {subtitle && <p>{subtitle}</p>}
+        </div>
+      </div>
+      {showLinks && <Links />}
+    </header>
+  </Fade>
+)
 
 Header.propTypes = {
-  timeout: PropTypes.bool,
-};
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  showLinks: PropTypes.bool,
+}
 
-export default Header;
+export default Header
