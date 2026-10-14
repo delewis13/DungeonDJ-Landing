@@ -9,7 +9,7 @@ module.exports = {
   description:
     "DungeonDJ is a voice-controlled soundboard for tabletop RPGs. Say a phrase at the table and the right music and sound effects start playing. Speech is recognised on your computer.",
   operator: "Daniel Lewis",
-  supportEmail: "",
+  supportEmail: "daniel.elliott.lewis@gmail.com",
   discordUrl: "",
   patreonUrl: "https://www.patreon.com/dungeon_dj",
   // YouTube video ID for the hero demo. Until there is one, the tutorial playlist is shown.
